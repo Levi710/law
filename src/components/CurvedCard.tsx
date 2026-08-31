@@ -21,21 +21,13 @@ const vertexShader = `
     float originalZ = worldPos.z - curveAmount * (1.0 - uTransitionProgress);
     float originalX = worldPos.x - (position.y * uScrollVelocity * 1.5) * (1.0 - uTransitionProgress);
     
-    // Contact mode tube logic
-    // Map X coordinate to a full cylinder (angle from -PI to PI approx)
-    float radius = 250.0;
-    float angle = (worldPos.x / (uViewportWidth * 0.8)) * 3.14159;
-    
-    // Create tube position (wrapping around the camera)
-    float tubeX = sin(angle) * radius;
-    float tubeZ = cos(angle) * radius - radius;
-    // Stretch Y slightly for effect
-    float tubeY = worldPos.y * 1.2;
+    // Contact mode transition logic (pulling back and scaling down)
+    float blackholeZ = originalZ - 1000.0;
     
     // Interpolate based on uContactMode
-    worldPos.x = mix(originalX, tubeX, uContactMode);
-    worldPos.y = mix(worldPos.y, tubeY, uContactMode);
-    worldPos.z = mix(originalZ, tubeZ + 550.0 * uContactMode, uContactMode); // push forward slightly
+    worldPos.x = mix(originalX, originalX * 0.5, uContactMode);
+    worldPos.y = mix(worldPos.y, worldPos.y * 0.5, uContactMode);
+    worldPos.z = mix(originalZ, blackholeZ, uContactMode);
 
     gl_Position = projectionMatrix * viewMatrix * worldPos;
   }
@@ -46,6 +38,7 @@ const fragmentShader = `
   uniform sampler2D uTexture;
   uniform float uScrollVelocity;
   uniform float uTransitionProgress;
+  uniform float uContactMode;
   
   // To handle aspect ratio
   uniform vec2 uImageRes;
@@ -67,7 +60,7 @@ const fragmentShader = `
     uv.y += shift;
 
     vec4 texColor = texture2D(uTexture, uv);
-    gl_FragColor = texColor;
+    gl_FragColor = vec4(texColor.rgb, texColor.a * (1.0 - uContactMode));
   }
 `;
 
@@ -226,7 +219,8 @@ export function CurvedCard({ id, imageUrl }: { id: string; imageUrl: string }) {
       <primitive object={new THREE.ShaderMaterial({
         vertexShader,
         fragmentShader,
-        uniforms: uniforms
+        uniforms: uniforms,
+        transparent: true
       })} ref={materialRef} attach="material" />
     </mesh>
   );

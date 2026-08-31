@@ -18,8 +18,8 @@ export const PROJECTS_DATA = [
   {
     id: 'services',
     title: 'Practice Areas',
-    subtitle: 'Practical & Result-Oriented',
-    image: '/images/samatva_logo.jpg',
+    subtitle: 'Samatva Nyaya Legal Firm',
+    image: '/images/law_logo.jpg',
     description: 'Explore our 7 core services including Property & Real Estate, Family & Succession, Corporate Compliance, Due Diligence, and Legal Contracts.'
   },
   {
@@ -234,11 +234,14 @@ function CameraSetup() {
 function Home() {
   const navigate = useNavigate();
   const isContactOpen = useLayoutStore(state => state.isContactOpen);
+  const scrollY = useLayoutStore(state => state.scrollY);
 
   const handleProjectClick = (id: string) => {
     useLayoutStore.setState({ activeProjectId: id });
     navigate(`/project/${id}`);
   };
+
+  const bgTextOpacity = scrollY > 300 ? 'opacity-0' : 'opacity-100';
 
   return (
     <div className="w-full min-h-[10000vh]">
@@ -252,7 +255,7 @@ function Home() {
       )}
       
       <div 
-        className={`fixed inset-0 pointer-events-none flex items-center pl-32 z-20 transition-opacity duration-1000 ${isContactOpen ? 'opacity-0' : 'opacity-100'}`}
+        className={`fixed inset-0 pointer-events-none flex items-center pl-32 z-20 transition-opacity duration-1000 ${isContactOpen ? 'opacity-0' : bgTextOpacity}`}
       >
         <h1 className="text-ivory text-[8vw] font-bold leading-none select-none drop-shadow-lg" style={{ fontFamily: '"Playfair Display", serif' }}>
           Samatva Nyaya
