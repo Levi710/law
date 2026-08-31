@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { CurvedCard } from './CurvedCard';
 import { Background } from './Background';
 import { PROJECTS_DATA } from '../App';

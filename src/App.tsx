@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, Suspense } from 'react';
+import { useEffect, useRef, Suspense } from 'react';
 import { BrowserRouter, Routes, Route, useNavigate, useParams } from 'react-router-dom';
 import { Canvas, useThree } from '@react-three/fiber';
 import Lenis from 'lenis';
@@ -277,8 +277,11 @@ function Home() {
   );
 }
 
+// @ts-ignore
 import AboutValues from './components/AboutValues';
+// @ts-ignore
 import ServicesGrid from './components/ServicesGrid';
+// @ts-ignore
 import CyberSpotlight from './components/CyberSpotlight';
 
 function Project() {
