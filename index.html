@@ -1,13 +1,362 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/jpeg" href="/images/law_logo.jpg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Samatva Nyaya Legal Firm</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Samatva Nyaya — Clarity in Law. Confidence in Action.</title>
+  <meta name="description" content="Samatva Nyaya provides practical legal advisory, documentation, compliance, and dispute support for individuals, businesses, and organizations across India.">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚖</text></svg>">
+</head>
+<body>
+
+  <!-- Mobile Overlay -->
+  <div class="mobile-overlay"></div>
+
+  <!-- ============ GLOBAL HEADER ============ -->
+  <header class="header" id="header">
+    <div class="container">
+      <a href="index.html" class="header-logo">
+        Samatva <span class="logo-accent">Nyaya</span>
+      </a>
+
+      <nav class="header-nav" id="main-nav">
+        <a href="services.html">Services</a>
+        <a href="index.html#how-we-work">How We Work</a>
+        <a href="insights.html">Insights</a>
+        <a href="about.html">About Us</a>
+      </nav>
+
+      <div class="header-cta">
+        <a href="contact.html" class="btn btn--gold btn--sm">Consult With Us</a>
+        <button class="mobile-toggle" id="mobile-toggle" aria-label="Toggle menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============ HERO SECTION ============ -->
+  <section class="hero" id="hero">
+    <div class="hero-bg">
+      <img src="images/hero-bg.jpg" alt="Abstract architectural photography" loading="eager">
+    </div>
+    <div class="container">
+      <div class="hero-content">
+        <h1 class="reveal">
+          Clarity in Law.<br>
+          <span class="hero-highlight">Confidence</span> in Action.
+        </h1>
+        <p class="reveal" style="transition-delay: 150ms;">
+          Providing practical legal advisory, documentation, compliance, and dispute support for individuals, businesses, and organizations.
+        </p>
+        <div class="hero-actions reveal" style="transition-delay: 300ms;">
+          <a href="services.html" class="btn btn--gold btn--lg">
+            Explore Services
+            <span class="btn-arrow">→</span>
+          </a>
+          <a href="contact.html" class="btn btn--outline btn--lg">
+            Get in Touch
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="hero-scroll-indicator">
+      <span>Scroll</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- ============ SERVICES — HOW WE CAN HELP ============ -->
+  <section class="section" id="services">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-label">What We Do</span>
+        <h2>Focused Expertise.<br>Practical Solutions.</h2>
+        <p>We bridge the gap between complex legal frameworks and your real-world objectives.</p>
+      </div>
+
+      <div class="bento-grid stagger-children">
+
+        <!-- Card 1: Legal Advisory -->
+        <div class="bento-card reveal">
+          <div class="bento-card-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+          </div>
+          <h4>Legal Advisory</h4>
+          <p>Strategic, straightforward counsel designed to help you navigate complex legal landscapes with absolute certainty.</p>
+          <a href="services.html" class="bento-card-link">
+            Learn More
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </a>
+        </div>
+
+        <!-- Card 2: Contracts & Documentation -->
+        <div class="bento-card reveal">
+          <div class="bento-card-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14,2 14,8 20,8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10,9 9,9 8,9"/></svg>
+          </div>
+          <h4>Contracts &amp; Documentation</h4>
+          <p>Precision-drafted agreements that secure your commercial interests, define clear boundaries, and prevent future liabilities.</p>
+          <a href="services.html" class="bento-card-link">
+            Learn More
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </a>
+        </div>
+
+        <!-- Card 3: Property & Land Matters -->
+        <div class="bento-card reveal">
+          <div class="bento-card-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9,22 9,12 15,12 15,22"/></svg>
+          </div>
+          <h4>Property &amp; Land Matters</h4>
+          <p>Comprehensive due diligence and risk-free guidance for real estate transactions, leasing, and property structuring.</p>
+          <a href="services.html" class="bento-card-link">
+            Learn More
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </a>
+        </div>
+
+        <!-- Card 4: Corporate & Commercial -->
+        <div class="bento-card reveal">
+          <div class="bento-card-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+          </div>
+          <h4>Corporate &amp; Commercial Legal Support</h4>
+          <p>End-to-end advisory for daily business operations, corporate structuring, and high-stakes commercial transactions.</p>
+          <a href="services.html" class="bento-card-link">
+            Learn More
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </a>
+        </div>
+
+        <!-- Card 5: Compliance & Regulatory -->
+        <div class="bento-card reveal">
+          <div class="bento-card-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <h4>Compliance &amp; Regulatory Support</h4>
+          <p>Proactive risk management frameworks to ensure your organization remains seamlessly aligned with evolving industry regulations.</p>
+          <a href="services.html" class="bento-card-link">
+            Learn More
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </a>
+        </div>
+
+        <!-- Card 6: Dispute & Litigation -->
+        <div class="bento-card reveal">
+          <div class="bento-card-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m15 9-6 6"/><path d="m9 9 6 6"/></svg>
+          </div>
+          <h4>Dispute &amp; Litigation Support</h4>
+          <p>Pragmatic conflict resolution and representation strategies that prioritize your time, resources, and peace of mind.</p>
+          <a href="services.html" class="bento-card-link">
+            Learn More
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ HOW WE WORK — CLIENT JOURNEY ============ -->
+  <section class="section section--navy" id="how-we-work">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-label">Our Process</span>
+        <h2>A Structured Approach to<br>Legal Problem-Solving</h2>
+        <p>We do not just list services; we partner with you through a transparent, four-step process.</p>
+      </div>
+
+      <div class="timeline stagger-children">
+
+        <div class="timeline-step reveal">
+          <div class="timeline-number">01</div>
+          <h4>Understand</h4>
+          <p>We begin by comprehensively evaluating your core requirements, business context, and the unique nuances of your legal issue.</p>
+        </div>
+
+        <div class="timeline-step reveal">
+          <div class="timeline-number">02</div>
+          <h4>Assess</h4>
+          <p>Our team conducts a rigorous analysis of your documents, current legal position, potential risks, and available strategic options.</p>
+        </div>
+
+        <div class="timeline-step reveal">
+          <div class="timeline-number">03</div>
+          <h4>Advise</h4>
+          <p>We cut through the jargon to deliver clear, actionable, and practical legal recommendations tailored to your specific goals.</p>
+        </div>
+
+        <div class="timeline-step reveal">
+          <div class="timeline-number">04</div>
+          <h4>Resolve</h4>
+          <p>We provide end-to-end assistance in executing documentation, implementing strategies, and coordinating further legal support until the matter is closed.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ BRAND PHILOSOPHY ============ -->
+  <section class="section" id="philosophy">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-label">Our Philosophy</span>
+        <h2>The Core of Our Practice</h2>
+      </div>
+
+      <div class="philosophy-grid stagger-children">
+
+        <div class="philosophy-card reveal">
+          <div class="philosophy-label">न्याय</div>
+          <h3>Nyaya</h3>
+          <span class="philosophy-subtitle">Understanding</span>
+          <p>True justice begins with a profound understanding of the law and how it intersects with your specific situation. We listen first, then act.</p>
+        </div>
+
+        <div class="philosophy-card reveal">
+          <div class="philosophy-label">समाधान</div>
+          <h3>Samadhan</h3>
+          <span class="philosophy-subtitle">Solution</span>
+          <p>We measure our success not by the hours billed, but by the solutions delivered. We cut through the noise to find the most practical path forward.</p>
+        </div>
+
+        <div class="philosophy-card reveal">
+          <div class="philosophy-label">समत्व</div>
+          <h3>Samatva</h3>
+          <span class="philosophy-subtitle">Balance</span>
+          <p>Legal matters require a steady hand. We approach every negotiation, dispute, and contract with equilibrium and measured clarity.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ LEGAL INSIGHTS ============ -->
+  <section class="section" id="insights" style="background: var(--white);">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-label">Knowledge Hub</span>
+        <h2>Legal Insights</h2>
+        <p>Stay informed and navigate your legal obligations with confidence.</p>
+      </div>
+
+      <div class="insights-grid stagger-children">
+
+        <a href="blog-vendor-agreement.html" class="insight-card reveal">
+          <div class="insight-card-image">
+            <img src="images/blog-header.jpg" alt="Contract document on desk" loading="lazy">
+          </div>
+          <div class="insight-card-body">
+            <span class="insight-tag">Contracts &amp; Documentation</span>
+            <h4>Beyond the Boilerplate: 3 Critical Clauses Every Founder Needs in a Vendor Agreement</h4>
+            <span class="insight-card-link">
+              Read Article
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            </span>
+          </div>
+        </a>
+
+        <div class="insight-card reveal">
+          <div class="insight-card-image" style="background: linear-gradient(135deg, var(--navy) 0%, var(--navy-support) 100%); display:flex; align-items:center; justify-content:center;">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <div class="insight-card-body">
+            <span class="insight-tag">Compliance</span>
+            <h4>The Cost of Non-Compliance: What Indian SMEs Need to Know About Regulatory Audits</h4>
+            <span class="insight-card-link">
+              Coming Soon
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            </span>
+          </div>
+        </div>
+
+        <div class="insight-card reveal">
+          <div class="insight-card-image" style="background: linear-gradient(135deg, var(--navy-support) 0%, var(--navy-light) 100%); display:flex; align-items:center; justify-content:center;">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9,22 9,12 15,12 15,22"/></svg>
+          </div>
+          <div class="insight-card-body">
+            <span class="insight-tag">Property Law</span>
+            <h4>Due Diligence Decoded: A Checklist Before You Sign Your Next Property Deal</h4>
+            <span class="insight-card-link">
+              Coming Soon
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            </span>
+          </div>
+        </div>
+
+      </div>
+
+      <div style="text-align: center; margin-top: var(--space-3xl);" class="reveal">
+        <a href="insights.html" class="btn btn--outline-navy">
+          View All Insights
+          <span class="btn-arrow">→</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FINAL CTA ============ -->
+  <section class="cta-section">
+    <div class="container">
+      <div class="reveal">
+        <h2>Ready to find practical solutions<br>for your legal matters?</h2>
+        <a href="contact.html" class="btn btn--gold btn--lg">
+          Get in Touch
+          <span class="btn-arrow">→</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer" id="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <h3>Samatva <span style="color: var(--gold);">Nyaya</span></h3>
+          <p class="tagline">न्याय सबके लिए, समाधान आपके साथ!</p>
+          <p class="tagline" style="font-size: 0.8rem; opacity: 0.7;">Nyaya. Samadhan. Samatva.</p>
+        </div>
+        <div class="footer-col">
+          <h5>Services</h5>
+          <a href="services.html">Legal Advisory</a>
+          <a href="services.html">Contracts &amp; Documentation</a>
+          <a href="services.html">Property &amp; Land</a>
+          <a href="services.html">Corporate &amp; Commercial</a>
+          <a href="services.html">Compliance</a>
+          <a href="services.html">Dispute Support</a>
+        </div>
+        <div class="footer-col">
+          <h5>Company</h5>
+          <a href="about.html">About Us</a>
+          <a href="index.html#how-we-work">How We Work</a>
+          <a href="insights.html">Legal Insights</a>
+          <a href="contact.html">Contact</a>
+        </div>
+        <div class="footer-col">
+          <h5>Connect</h5>
+          <a href="#">Office Location</a>
+          <a href="https://instagram.com/samatvanyay" target="_blank" rel="noopener">Instagram</a>
+          <a href="#">LinkedIn</a>
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Use</a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p class="footer-disclaimer">
+          <strong>BCI Disclaimer:</strong> As per the rules of the Bar Council of India, we are not permitted to solicit work or advertise. By accessing this website, you acknowledge that you are seeking information about Samatva Nyaya of your own accord and that no attorney-client relationship is created by accessing this site.
+        </p>
+        <p class="footer-copyright">© 2026 Samatva Nyaya. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
 </html>
