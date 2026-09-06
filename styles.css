@@ -368,6 +368,13 @@ p {
   transition: color var(--duration-normal) var(--ease-out);
 }
 
+.logo-img {
+  height: 48px;
+  width: auto;
+  object-fit: contain;
+  border-radius: 4px;
+}
+
 .header.scrolled .header-logo {
   color: var(--navy);
 }
@@ -738,8 +745,8 @@ p {
   font-family: var(--font-serif);
   font-size: var(--text-5xl);
   font-weight: 700;
-  color: var(--gold-light);
-  opacity: 0.3;
+  color: var(--gold);
+  opacity: 0.6;
   line-height: 1;
   margin-bottom: var(--space-md);
 }
@@ -893,6 +900,10 @@ p {
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
+.footer p {
+  color: rgba(255, 255, 255, 0.65);
+}
+
 .footer-brand h3 {
   font-family: var(--font-serif);
   color: var(--white);
@@ -937,7 +948,7 @@ p {
 
 .footer-disclaimer {
   font-size: var(--text-xs);
-  color: rgba(255, 255, 255, 0.35);
+  color: rgba(255, 255, 255, 0.6);
   max-width: 700px;
   line-height: 1.6;
 }
