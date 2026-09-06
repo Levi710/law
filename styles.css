@@ -436,9 +436,13 @@ p {
   display: block;
   width: 100%;
   height: 2px;
-  background: var(--navy);
+  background: var(--white);
   transition: all var(--duration-fast) var(--ease-out);
   transform-origin: center;
+}
+
+.header.scrolled .mobile-toggle span {
+  background: var(--navy);
 }
 
 .mobile-toggle.active span:nth-child(1) {
@@ -693,6 +697,16 @@ p {
   color: var(--text-muted);
   margin: 0 auto;
   max-width: 240px;
+}
+
+.section--navy .timeline-step p {
+  color: var(--text-light);
+}
+
+.section--navy .timeline-number {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: var(--gold);
+  color: var(--gold-light);
 }
 
 /* --- Philosophy Section (Staggered) --- */
@@ -1424,6 +1438,7 @@ p {
 
   .header-nav a {
     font-size: var(--text-lg);
+    color: var(--navy);
   }
 
   .header-cta .btn {
