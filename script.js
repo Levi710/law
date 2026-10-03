@@ -131,6 +131,20 @@ document.addEventListener('DOMContentLoaded', () => {
             group.appendChild(errorMsg);
           }
         }
+
+        // Phone validation
+        if (field.type === 'tel' && field.value.trim()) {
+          const phonePattern = /^\d{10}$/;
+          if (!phonePattern.test(field.value)) {
+            isValid = false;
+            field.style.borderColor = '#c0392b';
+            const errorMsg = document.createElement('span');
+            errorMsg.className = 'form-error';
+            errorMsg.style.cssText = 'color:#c0392b;font-size:0.75rem;margin-top:4px;';
+            errorMsg.textContent = 'Please enter a valid 10-digit phone number';
+            group.appendChild(errorMsg);
+          }
+        }
       });
 
       if (isValid) {
@@ -184,9 +198,12 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
 
-    // Clear error on input
+    // Clear error on input and restrict phone to numbers
     contactForm.querySelectorAll('input, select, textarea').forEach(field => {
       field.addEventListener('input', () => {
+        if (field.type === 'tel') {
+          field.value = field.value.replace(/\D/g, '').slice(0, 10);
+        }
         field.style.borderColor = '';
         const group = field.closest('.form-group');
         const error = group.querySelector('.form-error');
