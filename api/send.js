@@ -11,7 +11,7 @@ export default async function handler(req, res) {
   const { fullName, email, phone, inquiryArea, message } = req.body;
 
   try {
-    const data = await resend.emails.send({
+    const { data, error } = await resend.emails.send({
       from: 'onboarding@resend.dev',
       to: 'samatvanyaya@gmail.com',
       subject: `New Inquiry from ${fullName}`,
@@ -26,8 +26,12 @@ export default async function handler(req, res) {
       `
     });
 
+    if (error) {
+      return res.status(400).json({ error });
+    }
+
     res.status(200).json(data);
   } catch (error) {
-    res.status(400).json(error);
+    res.status(400).json({ error: error.message });
   }
 }
