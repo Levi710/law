@@ -1,0 +1,24 @@
+{
+  "name": "web",
+  "version": "1.0.0",
+  "description": "",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Levi710/law.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/Levi710/law/issues"
+  },
+  "homepage": "https://github.com/Levi710/law#readme",
+  "dependencies": {
+    "resend": "^6.32.0"
+  }
+}
