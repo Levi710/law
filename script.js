@@ -137,16 +137,50 @@ document.addEventListener('DOMContentLoaded', () => {
         // Success state
         const submitBtn = contactForm.querySelector('button[type="submit"]');
         const originalText = submitBtn.textContent;
-        submitBtn.textContent = 'Request Sent ✓';
-        submitBtn.style.background = '#2d6a4f';
+        submitBtn.textContent = 'Sending...';
         submitBtn.disabled = true;
 
-        setTimeout(() => {
-          submitBtn.textContent = originalText;
-          submitBtn.style.background = '';
-          submitBtn.disabled = false;
-          contactForm.reset();
-        }, 3000);
+        const formData = {
+          fullName: document.getElementById('full-name').value,
+          email: document.getElementById('email').value,
+          phone: document.getElementById('phone').value,
+          inquiryArea: document.getElementById('inquiry-area').value,
+          message: document.getElementById('message').value
+        };
+
+        fetch('/api/send', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(formData)
+        })
+        .then(response => {
+          if (!response.ok) throw new Error('Network response was not ok');
+          return response.json();
+        })
+        .then(data => {
+          submitBtn.textContent = 'Request Sent ✓';
+          submitBtn.style.background = '#2d6a4f';
+          
+          setTimeout(() => {
+            submitBtn.textContent = originalText;
+            submitBtn.style.background = '';
+            submitBtn.disabled = false;
+            contactForm.reset();
+          }, 3000);
+        })
+        .catch(error => {
+          console.error('Error:', error);
+          submitBtn.textContent = 'Error Sending';
+          submitBtn.style.background = '#c0392b';
+          
+          setTimeout(() => {
+            submitBtn.textContent = originalText;
+            submitBtn.style.background = '';
+            submitBtn.disabled = false;
+          }, 3000);
+        });
       }
     });
 
