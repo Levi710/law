@@ -10,17 +10,30 @@ export default async function handler(req, res) {
 
   const { fullName, email, phone, inquiryArea, message } = req.body;
 
+  const serviceLabels = {
+    'contracts-documentation': '1. Contracts & Legal Documentation',
+    'business-legal-support': '2. Business Legal Foundation & Ongoing Support',
+    'ip-ai-law': '3. Intellectual Property (IP) & AI in Law',
+    'land-property': '4. Land, Lease & Property Matters',
+    'cyber-bank-unfreeze': '5. Cybercrime & Bank Account Unfreezing',
+    'ni-act-138': '6. Negotiable Instruments (NI) Act / Section 138',
+    'litigation-adr': '7. Litigation, Appeals & ADR',
+    'other': 'Other Legal Advisory'
+  };
+
+  const formattedInquiryArea = serviceLabels[inquiryArea] || inquiryArea;
+
   try {
     const { data, error } = await resend.emails.send({
       from: 'onboarding@resend.dev',
       to: 'samatvanyaya@gmail.com',
-      subject: `New Inquiry from ${fullName}`,
+      subject: `New Inquiry [${formattedInquiryArea}] from ${fullName}`,
       html: `
-        <h3>New Consultation Request</h3>
+        <h3>New Consultation Request — Samatva Nyaya</h3>
         <p><strong>Name:</strong> ${fullName}</p>
         <p><strong>Email:</strong> ${email}</p>
         <p><strong>Phone:</strong> ${phone}</p>
-        <p><strong>Area of Inquiry:</strong> ${inquiryArea}</p>
+        <p><strong>Area of Inquiry:</strong> ${formattedInquiryArea}</p>
         <p><strong>Message:</strong></p>
         <p>${message}</p>
       `

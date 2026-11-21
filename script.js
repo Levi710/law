@@ -93,6 +93,46 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  // --- Auto-select Inquiry Area from URL query params (e.g. ?service=contracts-documentation) ---
+  const urlParams = new URLSearchParams(window.location.search);
+  const serviceParam = urlParams.get('service');
+  if (serviceParam) {
+    const inquirySelect = document.getElementById('inquiry-area');
+    if (inquirySelect) {
+      const targetOption = Array.from(inquirySelect.options).find(opt => opt.value === serviceParam);
+      if (targetOption) {
+        inquirySelect.value = serviceParam;
+      }
+    }
+  }
+
+  // --- Active Nav Pill highlighting for Services Hub ---
+  const servicePills = document.querySelectorAll('.service-nav-pill');
+  if (servicePills.length > 0) {
+    const observerOptions = {
+      root: null,
+      rootMargin: '-20% 0px -70% 0px',
+      threshold: 0
+    };
+    const catSections = document.querySelectorAll('.service-cat-section');
+    const catObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const id = entry.target.getAttribute('id');
+          servicePills.forEach(pill => {
+            if (pill.getAttribute('href') === `#${id}`) {
+              pill.classList.add('active');
+            } else {
+              pill.classList.remove('active');
+            }
+          });
+        }
+      });
+    }, observerOptions);
+
+    catSections.forEach(sec => catObserver.observe(sec));
+  }
+
   // --- Contact Form Validation ---
   const contactForm = document.getElementById('intake-form');
   if (contactForm) {
