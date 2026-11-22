@@ -202,6 +202,60 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // --- Insights Filter Dropdown (mobile) ---
   const insightsDropdown = document.querySelector('.insights-filter-dropdown');
+
+  // Shared filter logic for both mobile dropdown and desktop tags
+  const filterInsightCards = (filterVal) => {
+    const cards = document.querySelectorAll('.insights-grid .insight-card');
+    cards.forEach(card => {
+      const category = card.getAttribute('data-category') || '';
+      if (filterVal === 'all' || category === filterVal) {
+        card.style.display = '';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+    // Scroll to insights grid
+    const targetSection = document.getElementById('all-insights');
+    if (targetSection) {
+      targetSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  // Sync visual state across both mobile dropdown tags and desktop filter tags
+  const syncFilterUI = (filterVal) => {
+    // Desktop tags
+    document.querySelectorAll('.insight-filter-tags .filter-tag').forEach(dt => {
+      if (dt.getAttribute('data-filter') === filterVal) {
+        dt.style.background = 'var(--navy)';
+        dt.style.color = 'var(--white)';
+        dt.style.fontWeight = '600';
+      } else {
+        dt.style.background = 'transparent';
+        dt.style.color = 'var(--navy-support)';
+        dt.style.fontWeight = '500';
+      }
+    });
+    // Mobile dropdown tags
+    if (insightsDropdown) {
+      insightsDropdown.querySelectorAll('.filter-tag').forEach(t => {
+        if (t.getAttribute('data-filter') === filterVal) {
+          t.classList.add('active');
+        } else {
+          t.classList.remove('active');
+        }
+      });
+    }
+  };
+
+  // Desktop filter tags click handler
+  document.querySelectorAll('.insight-filter-tags .filter-tag').forEach(dt => {
+    dt.addEventListener('click', () => {
+      const filterVal = dt.getAttribute('data-filter');
+      syncFilterUI(filterVal);
+      filterInsightCards(filterVal);
+    });
+  });
+
   if (insightsDropdown) {
     const trigger = insightsDropdown.querySelector('.dropdown-trigger');
     const label = trigger ? trigger.querySelector('.trigger-label') : null;
@@ -223,20 +277,9 @@ document.addEventListener('DOMContentLoaded', () => {
         const text = tag.textContent.trim();
         if (label) label.textContent = text;
 
-        tags.forEach(t => t.classList.remove('active'));
-        tag.classList.add('active');
-
-        // Sync with desktop filter tags
         const filterVal = tag.getAttribute('data-filter');
-        document.querySelectorAll('.insight-filter-tags .filter-tag').forEach(dt => {
-          if (dt.getAttribute('data-filter') === filterVal) {
-            dt.style.background = 'var(--navy)';
-            dt.style.color = 'var(--white)';
-          } else {
-            dt.style.background = 'transparent';
-            dt.style.color = 'var(--navy-support)';
-          }
-        });
+        syncFilterUI(filterVal);
+        filterInsightCards(filterVal);
 
         toggleInsightsDropdown(false);
       });
@@ -254,6 +297,22 @@ document.addEventListener('DOMContentLoaded', () => {
         trigger?.focus();
       }
     });
+  }
+
+  // Auto-filter on page load if URL has hash (e.g. insights.html#contracts)
+  const insightsHash = window.location.hash.replace('#', '');
+  if (insightsHash && document.getElementById('all-insights')) {
+    const validFilters = ['all', 'contracts', 'compliance', 'property-law', 'corporate'];
+    if (validFilters.includes(insightsHash)) {
+      syncFilterUI(insightsHash);
+      filterInsightCards(insightsHash);
+      // Update mobile dropdown label
+      if (insightsDropdown) {
+        const lbl = insightsDropdown.querySelector('.trigger-label');
+        const matchTag = insightsDropdown.querySelector(`.filter-tag[data-filter="${insightsHash}"]`);
+        if (lbl && matchTag) lbl.textContent = matchTag.textContent.trim();
+      }
+    }
   }
 
   const contactForm = document.getElementById('intake-form');
