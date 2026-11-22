@@ -23,8 +23,11 @@ document.addEventListener('DOMContentLoaded', () => {
   const currentPath = window.location.pathname.split('/').pop() || 'index.html';
   navLinks.forEach(link => {
     const href = link.getAttribute('href');
-    if (href === currentPath || (currentPath === '' && href === 'index.html')) {
+    const linkFile = href.split('#')[0].split('?')[0];
+    if (linkFile === currentPath && !href.includes('#')) {
       link.classList.add('active');
+    } else if (href.includes('#')) {
+      link.classList.remove('active');
     }
   });
 
