@@ -58,9 +58,25 @@
   <section class="section" style="padding-top: var(--space-2xl);">
     <div class="container">
 
-      <!-- Sticky Quick-Navigation Bar -->
+      <!-- Mobile Glass Dropdown (visible ≤768px) -->
+      <div class="service-nav-dropdown" aria-label="Service Categories Navigation">
+        <button type="button" class="dropdown-trigger" aria-haspopup="listbox" aria-expanded="false">
+          <span class="trigger-label">1. Contracts &amp; Documentation</span>
+          <svg class="chevron" viewBox="0 0 10 6" aria-hidden="true"><path d="M0 0l5 6 5-6z" fill="currentColor"/></svg>
+        </button>
+        <div class="dropdown-list" role="listbox">
+          <a href="#contracts" class="service-nav-pill active" role="option">1. Contracts &amp; Documentation</a>
+          <a href="#business-support" class="service-nav-pill" role="option">2. Business Legal Foundation</a>
+          <a href="#ip-ai" class="service-nav-pill" role="option">3. IP &amp; AI in Law</a>
+          <a href="#property" class="service-nav-pill" role="option">4. Land &amp; Property</a>
+          <a href="#cyber-bank-unfreeze" class="service-nav-pill" role="option">5. Cyber &amp; Account Unfreeze</a>
+          <a href="#ni-act" class="service-nav-pill" role="option">6. NI Act Section 138</a>
+          <a href="#litigation-adr" class="service-nav-pill" role="option">7. Litigation &amp; ADR</a>
+        </div>
+      </div>
+      <!-- Original Desktop Navigation (hidden on mobile) -->
       <nav class="service-nav-bar reveal" aria-label="Service Categories Navigation">
-        <a href="#contracts" class="service-nav-pill">1. Contracts &amp; Documentation</a>
+        <a href="#contracts" class="service-nav-pill active">1. Contracts &amp; Documentation</a>
         <a href="#business-support" class="service-nav-pill">2. Business Legal Foundation</a>
         <a href="#ip-ai" class="service-nav-pill">3. IP &amp; AI in Law</a>
         <a href="#property" class="service-nav-pill">4. Land &amp; Property</a>

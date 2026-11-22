@@ -55,12 +55,27 @@
     <div class="container">
 
       <!-- Filter Tags -->
-      <div class="reveal" style="display: flex; gap: var(--space-sm); flex-wrap: wrap; margin-bottom: var(--space-3xl);">
-        <span style="display: inline-block; padding: 8px 20px; border-radius: 100px; font-size: var(--text-sm); font-weight: 600; background: var(--navy); color: var(--white); cursor: pointer;">All</span>
-        <span style="display: inline-block; padding: 8px 20px; border-radius: 100px; font-size: var(--text-sm); font-weight: 500; border: 1.5px solid var(--border-light); color: var(--navy-support); cursor: pointer; transition: all 0.2s ease;">Contracts</span>
-        <span style="display: inline-block; padding: 8px 20px; border-radius: 100px; font-size: var(--text-sm); font-weight: 500; border: 1.5px solid var(--border-light); color: var(--navy-support); cursor: pointer; transition: all 0.2s ease;">Compliance</span>
-        <span style="display: inline-block; padding: 8px 20px; border-radius: 100px; font-size: var(--text-sm); font-weight: 500; border: 1.5px solid var(--border-light); color: var(--navy-support); cursor: pointer; transition: all 0.2s ease;">Property Law</span>
-        <span style="display: inline-block; padding: 8px 20px; border-radius: 100px; font-size: var(--text-sm); font-weight: 500; border: 1.5px solid var(--border-light); color: var(--navy-support); cursor: pointer; transition: all 0.2s ease;">Corporate</span>
+      <!-- Mobile Glass Dropdown for Insights Filters (≤768px) -->
+      <div class="insights-filter-dropdown" aria-label="Insights Filters Navigation">
+        <button type="button" class="dropdown-trigger" aria-haspopup="listbox" aria-expanded="false">
+          <span class="trigger-label">All</span>
+          <svg class="chevron" viewBox="0 0 10 6" aria-hidden="true"><path d="M0 0l5 6 5-6z" fill="currentColor"/></svg>
+        </button>
+        <div class="dropdown-list" role="listbox">
+          <span class="filter-tag active" data-filter="all" role="option">All</span>
+          <span class="filter-tag" data-filter="contracts" role="option">Contracts</span>
+          <span class="filter-tag" data-filter="compliance" role="option">Compliance</span>
+          <span class="filter-tag" data-filter="property-law" role="option">Property Law</span>
+          <span class="filter-tag" data-filter="corporate" role="option">Corporate</span>
+        </div>
+      </div>
+      <!-- Original Filter Tags (hidden on mobile) -->
+      <div class="insight-filter-tags reveal" style="display: flex; gap: var(--space-sm); flex-wrap: wrap; margin-bottom: var(--space-3xl);">
+        <span class="filter-tag active" data-filter="all" style="display: inline-block; padding: 8px 20px; border-radius: 100px; font-size: var(--text-sm); font-weight: 600; background: var(--navy); color: var(--white); cursor: pointer;">All</span>
+        <span class="filter-tag" data-filter="contracts" style="display: inline-block; padding: 8px 20px; border-radius: 100px; font-size: var(--text-sm); font-weight: 500; border: 1.5px solid var(--border-light); color: var(--navy-support); cursor: pointer; transition: all 0.2s ease;">Contracts</span>
+        <span class="filter-tag" data-filter="compliance" style="display: inline-block; padding: 8px 20px; border-radius: 100px; font-size: var(--text-sm); font-weight: 500; border: 1.5px solid var(--border-light); color: var(--navy-support); cursor: pointer; transition: all 0.2s ease;">Compliance</span>
+        <span class="filter-tag" data-filter="property-law" style="display: inline-block; padding: 8px 20px; border-radius: 100px; font-size: var(--text-sm); font-weight: 500; border: 1.5px solid var(--border-light); color: var(--navy-support); cursor: pointer; transition: all 0.2s ease;">Property Law</span>
+        <span class="filter-tag" data-filter="corporate" style="display: inline-block; padding: 8px 20px; border-radius: 100px; font-size: var(--text-sm); font-weight: 500; border: 1.5px solid var(--border-light); color: var(--navy-support); cursor: pointer; transition: all 0.2s ease;">Corporate</span>
       </div>
 
       <div class="insights-grid stagger-children">

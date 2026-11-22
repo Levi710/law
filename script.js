@@ -109,6 +109,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // --- Active Nav Pill highlighting for Services Hub ---
   const servicePills = document.querySelectorAll('.service-nav-pill');
   if (servicePills.length > 0) {
+    const dropdownLabel = document.querySelector('.service-nav-dropdown .trigger-label');
     const observerOptions = {
       root: null,
       rootMargin: '-20% 0px -70% 0px',
@@ -122,6 +123,9 @@ document.addEventListener('DOMContentLoaded', () => {
           servicePills.forEach(pill => {
             if (pill.getAttribute('href') === `#${id}`) {
               pill.classList.add('active');
+              if (dropdownLabel && pill.closest('.service-nav-dropdown')) {
+                dropdownLabel.textContent = pill.textContent.trim();
+              }
             } else {
               pill.classList.remove('active');
             }
@@ -133,7 +137,122 @@ document.addEventListener('DOMContentLoaded', () => {
     catSections.forEach(sec => catObserver.observe(sec));
   }
 
-  // --- Contact Form Validation ---
+  // --- Service Nav Dropdown (mobile) ---
+  const serviceDropdown = document.querySelector('.service-nav-dropdown');
+  if (serviceDropdown) {
+    const trigger = serviceDropdown.querySelector('.dropdown-trigger');
+    const label = trigger ? trigger.querySelector('.trigger-label') : null;
+    const pills = serviceDropdown.querySelectorAll('.service-nav-pill');
+    const desktopPills = document.querySelectorAll('.service-nav-bar .service-nav-pill');
+
+    const toggleServiceDropdown = (openState) => {
+      const isOpen = openState !== undefined ? openState : !serviceDropdown.classList.contains('open');
+      serviceDropdown.classList.toggle('open', isOpen);
+      if (trigger) trigger.setAttribute('aria-expanded', String(isOpen));
+    };
+
+    trigger?.addEventListener('click', (e) => {
+      e.stopPropagation();
+      toggleServiceDropdown();
+    });
+
+    pills.forEach(pill => {
+      pill.addEventListener('click', (e) => {
+        e.preventDefault();
+        const text = pill.textContent.trim();
+        if (label) label.textContent = text;
+
+        pills.forEach(p => p.classList.remove('active'));
+        pill.classList.add('active');
+
+        // Sync with desktop pills
+        desktopPills.forEach(dp => {
+          if (dp.getAttribute('href') === pill.getAttribute('href')) {
+            dp.classList.add('active');
+          } else {
+            dp.classList.remove('active');
+          }
+        });
+
+        const targetId = pill.getAttribute('href');
+        if (targetId && targetId.startsWith('#')) {
+          const targetEl = document.querySelector(targetId);
+          if (targetEl) targetEl.scrollIntoView({ behavior: 'smooth' });
+        }
+        toggleServiceDropdown(false);
+      });
+    });
+
+    document.addEventListener('click', (e) => {
+      if (!serviceDropdown.contains(e.target)) {
+        toggleServiceDropdown(false);
+      }
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && serviceDropdown.classList.contains('open')) {
+        toggleServiceDropdown(false);
+        trigger?.focus();
+      }
+    });
+  }
+
+  // --- Insights Filter Dropdown (mobile) ---
+  const insightsDropdown = document.querySelector('.insights-filter-dropdown');
+  if (insightsDropdown) {
+    const trigger = insightsDropdown.querySelector('.dropdown-trigger');
+    const label = trigger ? trigger.querySelector('.trigger-label') : null;
+    const tags = insightsDropdown.querySelectorAll('.filter-tag');
+
+    const toggleInsightsDropdown = (openState) => {
+      const isOpen = openState !== undefined ? openState : !insightsDropdown.classList.contains('open');
+      insightsDropdown.classList.toggle('open', isOpen);
+      if (trigger) trigger.setAttribute('aria-expanded', String(isOpen));
+    };
+
+    trigger?.addEventListener('click', (e) => {
+      e.stopPropagation();
+      toggleInsightsDropdown();
+    });
+
+    tags.forEach(tag => {
+      tag.addEventListener('click', () => {
+        const text = tag.textContent.trim();
+        if (label) label.textContent = text;
+
+        tags.forEach(t => t.classList.remove('active'));
+        tag.classList.add('active');
+
+        // Sync with desktop filter tags
+        const filterVal = tag.getAttribute('data-filter');
+        document.querySelectorAll('.insight-filter-tags .filter-tag').forEach(dt => {
+          if (dt.getAttribute('data-filter') === filterVal) {
+            dt.style.background = 'var(--navy)';
+            dt.style.color = 'var(--white)';
+          } else {
+            dt.style.background = 'transparent';
+            dt.style.color = 'var(--navy-support)';
+          }
+        });
+
+        toggleInsightsDropdown(false);
+      });
+    });
+
+    document.addEventListener('click', (e) => {
+      if (!insightsDropdown.contains(e.target)) {
+        toggleInsightsDropdown(false);
+      }
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && insightsDropdown.classList.contains('open')) {
+        toggleInsightsDropdown(false);
+        trigger?.focus();
+      }
+    });
+  }
+
   const contactForm = document.getElementById('intake-form');
   if (contactForm) {
     contactForm.addEventListener('submit', (e) => {
